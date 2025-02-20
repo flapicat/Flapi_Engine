@@ -59,7 +59,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>GLFW_INCLUDE_NONE;FL_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;..\vendor\GLFW\include;..\vendor\Glad\include;..\vendor\imgui\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;..\vendor;..\vendor\spdlog\include;..\vendor\GLFW\include;..\vendor\Glad\include;..\vendor\imgui\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -78,7 +78,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>GLFW_INCLUDE_NONE;FL_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;..\vendor\GLFW\include;..\vendor\Glad\include;..\vendor\imgui\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;..\vendor;..\vendor\spdlog\include;..\vendor\GLFW\include;..\vendor\Glad\include;..\vendor\imgui\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -97,16 +97,36 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\App.h" />
+    <ClInclude Include="src\Log.h" />
+    <ClInclude Include="src\engine\core\KeyCodes.h" />
+    <ClInclude Include="src\engine\core\MouseCodes.h" />
+    <ClInclude Include="src\engine\core\Window.h" />
+    <ClInclude Include="src\engine\core\data.h" />
+    <ClInclude Include="src\engine\core\deltaTime.h" />
+    <ClInclude Include="src\engine\core\input.h" />
+    <ClInclude Include="src\engine\render\EBO.h" />
+    <ClInclude Include="src\engine\render\ShaderClass.h" />
+    <ClInclude Include="src\engine\render\Text.h" />
+    <ClInclude Include="src\engine\render\Texture.h" />
+    <ClInclude Include="src\engine\render\VAO.h" />
+    <ClInclude Include="src\engine\render\VBO.h" />
+    <ClInclude Include="src\game\Game.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\App.cpp" />
+    <ClCompile Include="src\Log.cpp" />
+    <ClCompile Include="src\engine\core\Window.cpp" />
+    <ClCompile Include="src\engine\core\deltaTime.cpp" />
+    <ClCompile Include="src\engine\core\input.cpp" />
     <ClCompile Include="src\engine\render\EBO.cpp" />
     <ClCompile Include="src\engine\render\ShaderClass.cpp" />
-    <ClCompile Include="src\game\Game.cpp" />
-    <ClCompile Include="src\App.cpp" />
-    <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\engine\Window.cpp" />
     <ClCompile Include="src\engine\render\Text.cpp" />
     <ClCompile Include="src\engine\render\Texture.cpp" />
     <ClCompile Include="src\engine\render\VAO.cpp" />
     <ClCompile Include="src\engine\render\VBO.cpp" />
+    <ClCompile Include="src\game\Game.cpp" />
+    <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\vendor\GLFW\GLFW.vcxproj">
@@ -118,17 +138,6 @@
     <ProjectReference Include="..\vendor\imgui\ImGui.vcxproj">
       <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\engine\render\EBO.h" />
-    <ClInclude Include="src\engine\render\ShaderClass.h" />
-    <ClInclude Include="src\game\Game.h" />
-    <ClInclude Include="src\App.h" />
-    <ClInclude Include="src\engine\Window.h" />
-    <ClInclude Include="src\engine\render\Text.h" />
-    <ClInclude Include="src\engine\render\Texture.h" />
-    <ClInclude Include="src\engine\render\VAO.h" />
-    <ClInclude Include="src\engine\render\VBO.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

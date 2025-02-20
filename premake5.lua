@@ -6,6 +6,7 @@ workspace "Flapi_Engine"
 		"Debug",
 		"Release",
 	}
+	startproject "Flapi_Engine"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
@@ -31,6 +32,8 @@ project "Flapi_Engine"
 	includedirs
 	{
 		"%{prj.name}/src",
+		"vendor/",
+		"vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}"

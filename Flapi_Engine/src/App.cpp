@@ -15,7 +15,7 @@ void App::start()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	m_window->createWindow(1600, 900, "GAME");
+	m_window->createWindow(m_windowWidth, m_windowHeight, "APPLICATION");
 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{
@@ -30,12 +30,9 @@ void App::run()
 {
 	while (!glfwWindowShouldClose(m_window->getWindow()))
 	{
-		//DELTA TIME
-		float currentFrame = glfwGetTime();
-		m_deltaTime = currentFrame - m_lastFrame;
-		m_lastFrame = currentFrame;
+		deltaTime.updateDeltaTime();
 
-		input(m_window->getWindow());
+		inputs(m_window->getWindow());
 
 		glClearColor(0.2f, 0.3f, 0.3f, 0.1f);
 		glClear(GL_COLOR_BUFFER_BIT);
@@ -55,12 +52,14 @@ void App::close()
 	glfwTerminate();
 }
 
-void App::input(GLFWwindow* window)
+void App::inputs(GLFWwindow* window)
 {
-	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+	if (input.IsKeyPressed(Engine::Key::Escape, window))
 	{
 		glfwSetWindowShouldClose(window, true);
 	}
+
+	game.input(window);
 }
 
 //---------------------------------------------------------
