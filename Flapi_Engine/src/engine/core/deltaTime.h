@@ -6,8 +6,11 @@ namespace Engine
 {
 	struct DeltaTime
 	{
-		float m_deltaTime = 0, m_lastFrame = 0;
+	public:
 		void updateDeltaTime();
 		float getDeltaTime();
+	private:
+		float m_deltaTime = 0, m_lastFrame = 0;
 	};
+	static struct DeltaTime deltaTime;
 }

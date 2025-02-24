@@ -1,13 +1,16 @@
 #include "deltaTime.h"
 
-void Engine::DeltaTime::updateDeltaTime()
+namespace Engine
 {
-	float currentFrame = glfwGetTime();
-	m_deltaTime = currentFrame - m_lastFrame;
-	m_lastFrame = currentFrame;
-}
+	void DeltaTime::updateDeltaTime()
+	{
+		float currentFrame = glfwGetTime();
+		m_deltaTime = currentFrame - m_lastFrame;
+		m_lastFrame = currentFrame;
+	}
 
-float Engine::DeltaTime::getDeltaTime()
-{
-	return m_deltaTime;
+	float DeltaTime::getDeltaTime()
+	{
+		return m_deltaTime;
+	}
 }

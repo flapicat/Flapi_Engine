@@ -92,4 +92,8 @@
     </ClCompile>
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="assets\shaders\shader.vert" />
+    <Text Include="assets\shaders\shader.frag" />
+  </ItemGroup>
 </Project>

@@ -22,23 +22,24 @@ namespace Engine
 	class DataClass
 	{
 	public:
+		int getWindowWidth() { return data.windowWidth; }
+		int getWindowHeight() { return data.windowHeight; }
+		glm::vec2 getMousePos() { return glm::vec2(data.mouseX, data.mouseY); }
+		glm::vec2 getScrollOffset() { return glm::vec2(data.scrollX, data.scrollY); }
+	protected:
 		//MOUSE POS
 		void setMouseX(double X) { data.mouseX = X; }
 		void setMouseY(double Y) { data.mouseY = Y; }
-		inline void setMousePos(double X, double Y) { data.mouseX = X; data.mouseY = Y; }
-		glm::vec2 getMousePos() { return glm::vec2(data.mouseX, data.mouseY); }
-		
+		void setMousePos(double X, double Y) { data.mouseX = X; data.mouseY = Y; }
+
 		//SCROLL OFFSET
 		void setScrollX(double X) { data.scrollX = X; }
 		void setScrollY(double Y) { data.scrollY = Y; }
 		void setScrollOffset(double X, double Y) { data.scrollX = X; data.scrollY = Y; }
-		glm::vec2 getScrollOffset() { return glm::vec2(data.scrollX, data.scrollY); }
-		
+
 		//WINDOW HEIGHT WIDTH
 		void setWindowWidth(int width) { data.windowWidth = width; }
 		void setWindowHeight(int height) { data.windowHeight = height; }
-		int getWindowWidth() { return data.windowWidth; }
-		int getWindowHeight() { return data.windowHeight; }
 
 		//KEY PRESSED RELEASED REPEAT
 		void setKeyPressed(KeyCode key) { data.keyCodePressed = key; };
@@ -48,6 +49,8 @@ namespace Engine
 		//MOUSE BUTTON PRESSED RELEASED
 		void setMouseButtonPressed(MouseCode button) { data.mouseButtonPressed = button; };
 		void setMouseButtonReleased(MouseCode button) { data.mouseButtonReleased = button; };
+
+		friend class Window;
 	private:
 		struct Data
 		{

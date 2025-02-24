@@ -15,7 +15,7 @@ void App::start()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	m_window->createWindow(m_windowWidth, m_windowHeight, "APPLICATION");
+	m_window->createWindow(m_windowWidth, m_windowHeight, m_title);
 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{
@@ -30,14 +30,12 @@ void App::run()
 {
 	while (!glfwWindowShouldClose(m_window->getWindow()))
 	{
-		deltaTime.updateDeltaTime();
-
 		inputs(m_window->getWindow());
 
 		glClearColor(0.2f, 0.3f, 0.3f, 0.1f);
 		glClear(GL_COLOR_BUFFER_BIT);
-
-
+		
+		
 		game.run();
 
 
