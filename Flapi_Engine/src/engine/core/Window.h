@@ -14,6 +14,7 @@ namespace Engine
 		Window();
 		~Window();
 
+		void centerWindow();
 		void createWindow(int Width, int Height, const char* Title);
 		GLFWwindow* getWindow();
 

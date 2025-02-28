@@ -2,7 +2,10 @@
 
 namespace Engine
 {
-	void VBO::linkVBO(float* vertices, GLsizeiptr size)
+	VBO::VBO()
+	{
+	}
+	void VBO::attachVertices(float* vertices, GLsizeiptr size)
 	{
 		glGenBuffers(1, &ID);
 		glBindBuffer(GL_ARRAY_BUFFER, ID);

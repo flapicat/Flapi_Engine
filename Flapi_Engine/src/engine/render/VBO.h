@@ -9,7 +9,7 @@ namespace Engine
 	public:
 		VBO();
 
-		void linkVBO(float* vertices, GLsizeiptr size);
+		void attachVertices(float* vertices, GLsizeiptr size);
 		void bind();
 		void unbind();
 		void Delete();

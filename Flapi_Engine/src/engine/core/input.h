@@ -11,4 +11,5 @@ namespace Engine
 
 		static bool IsMouseButtonPressed(MouseCode button, GLFWwindow* window);
 	};
+	inline static Input input;
 }

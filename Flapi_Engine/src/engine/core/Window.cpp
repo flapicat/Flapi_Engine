@@ -16,6 +16,17 @@ namespace Engine
 		return m_window;
 	}
 
+	void Window::centerWindow()
+	{
+		const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+
+		// Calculate the window position to center it
+		int windowPosX = (mode->width - data.getWindowWidth()) / 2;
+		int windowPosY = (mode->height - data.getWindowHeight()) / 2;
+
+		glfwSetWindowPos(m_window, windowPosX, windowPosY);
+	}
+
 	void Window::createWindow(int Width, int Height, const char* Title)
 	{
 		//----------------------------------------------------
