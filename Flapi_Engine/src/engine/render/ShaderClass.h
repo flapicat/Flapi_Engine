@@ -46,8 +46,8 @@ namespace Engine
 		void setMat3(const std::string& name, const glm::mat3& mat) const;
 		void setMat4(const std::string& name, const glm::mat4& mat) const;
 
-	private:
 		unsigned int ID;
+	private:
 		void chaeckCompileErrors(GLuint shader, std::string type);
 	};
 }

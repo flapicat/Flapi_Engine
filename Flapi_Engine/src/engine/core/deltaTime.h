@@ -4,7 +4,7 @@
 
 namespace Engine
 {
-	struct DeltaTime
+	class DeltaTime
 	{
 	public:
 		void updateDeltaTime();
@@ -12,5 +12,5 @@ namespace Engine
 	private:
 		float m_deltaTime = 0, m_lastFrame = 0;
 	};
-	static struct DeltaTime deltaTime;
+	static inline DeltaTime deltaTime;
 }

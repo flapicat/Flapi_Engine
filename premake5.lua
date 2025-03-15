@@ -13,11 +13,9 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "vendor/GLFW/include"
 IncludeDir["Glad"] = "vendor/Glad/include"
-IncludeDir["ImGui"] = "vendor/imgui/include"
 
 include "vendor/GLFW"
 include "vendor/Glad"
-include "vendor/imgui"
 
 project "Flapi_Engine"
 	location "Flapi_Engine"
@@ -27,6 +25,8 @@ project "Flapi_Engine"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+	files { "%{prj.name}/assets/**"}
+	files { "%{prj.name}/imgui/**.h", "%{prj.name}/imgui/**.cpp" }
 	files{ "%{prj.name}/src/**.h" , "%{prj.name}/src/**.cpp"}
 
 	includedirs
@@ -36,14 +36,13 @@ project "Flapi_Engine"
 		"vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{prj.name}/imgui"
 	}
 
 	links
 	{
 		"GLFW",
 		"Glad",
-        "ImGui",
 		"opengl32.lib"
 	}
 	

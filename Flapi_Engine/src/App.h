@@ -3,9 +3,10 @@
 
 #include "Log.h"
 #include "game/Game.h"
-#include "engine/core/deltaTime.h"
 #include "engine/core/Window.h"
 #include "engine/core/input.h"
+
+#include "engine/debug/ImGuiAPI.h"
 
 class App
 {
@@ -18,12 +19,13 @@ public:
 
 	void inputs(GLFWwindow* window);
 private:
+	bool keyPressed = false;
 	//ENGINE
-	Engine::Input input;
 	int m_windowWidth = 1600;
 	int m_windowHeight = 900;
 	const char* m_title= "APPLICATION";
 	std::unique_ptr<Engine::Window> m_window = std::make_unique<Engine::Window>();
+
 	//GAME
 	Game game;
 };

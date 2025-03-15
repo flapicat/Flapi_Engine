@@ -22,24 +22,29 @@ void App::start()
 		std::cout << "FAILED TO INIT GLAD\n";
 		exit(-1);
 	}
+	glfwSetInputMode(m_window->data.getWindow(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_BLEND);
 
 	game.init();
+
+	Engine::Debug::imGuiAPI.initImGui(m_window->data.getWindow());
 }
 
 void App::run()
 {
-	while (!glfwWindowShouldClose(m_window->getWindow()))
+	while (!glfwWindowShouldClose(m_window->data.getWindow()))
 	{
-		inputs(m_window->getWindow());
+		inputs(m_window->data.getWindow());
 
 		glClearColor(0.2f, 0.3f, 0.3f, 0.1f);
-		glClear(GL_COLOR_BUFFER_BIT);
-		
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
 		
 		game.run();
 
 
-		glfwSwapBuffers(m_window->getWindow());
+		glfwSwapBuffers(m_window->data.getWindow());
 		glfwPollEvents();
 	}
 }
@@ -47,14 +52,22 @@ void App::run()
 void App::close()
 {
 	game.close();
+	Engine::Debug::imGuiAPI.terminateImGui(m_window->data.getWindow());
+
 	glfwTerminate();
 }
 
 void App::inputs(GLFWwindow* window)
 {
-	if (input.IsKeyPressed(Engine::Key::Escape, window))
+	if (Engine::input.IsKeyPressed(Engine::Key::Escape, window))
 	{
-		glfwSetWindowShouldClose(window, true);
+		if (!keyPressed) { 
+			game.switchGameState();
+			keyPressed = true;
+		}
+	}
+	else if (Engine::input.IsKeyReleased(Engine::Key::Escape, window)) {
+		keyPressed = false; 
 	}
 
 	game.input(window);

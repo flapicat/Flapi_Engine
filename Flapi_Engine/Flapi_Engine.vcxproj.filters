@@ -1,95 +1,229 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="engine">
-      <UniqueIdentifier>{FBDB78FB-E77D-A3D1-D038-B725BC792A22}</UniqueIdentifier>
+    <Filter Include="assets">
+      <UniqueIdentifier>{583885F2-44DA-AFC8-2D95-C31C19D63619}</UniqueIdentifier>
     </Filter>
-    <Filter Include="engine\core">
-      <UniqueIdentifier>{5341430D-BFF6-BB02-48EB-B5D9B49FB206}</UniqueIdentifier>
+    <Filter Include="assets\res">
+      <UniqueIdentifier>{915CB5A8-7D14-F7F5-E61B-D051D2F291E6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="engine\render">
-      <UniqueIdentifier>{2A265F8D-96E6-DAC3-5F21-2441CBA01FA0}</UniqueIdentifier>
+    <Filter Include="assets\res\font">
+      <UniqueIdentifier>{57343752-C3BF-A416-CCD0-270B38DB0017}</UniqueIdentifier>
     </Filter>
-    <Filter Include="game">
-      <UniqueIdentifier>{9F35977C-8B6C-980D-3459-7E10206F140F}</UniqueIdentifier>
+    <Filter Include="assets\res\textures">
+      <UniqueIdentifier>{A47D404A-10DF-1D58-994C-640A05AD5417}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="assets\shaders">
+      <UniqueIdentifier>{51CD2FD9-3D9B-23DF-262F-9405129CFF43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="imgui">
+      <UniqueIdentifier>{0098A80F-6CAC-D0C0-352E-7420A101CDF1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\engine">
+      <UniqueIdentifier>{32B5D758-1E6D-19A6-8774-F201734BB496}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\engine\core">
+      <UniqueIdentifier>{EA741D25-5600-8BE9-5F11-0EDECB1BE7E9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\engine\debug">
+      <UniqueIdentifier>{486DD8C8-3466-F71A-5D98-DC9F49F0D626}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\engine\render">
+      <UniqueIdentifier>{819B9404-EDB1-929A-3629-1EBCA27E6322}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\game">
+      <UniqueIdentifier>{165530CF-0222-8BDA-2B3B-79821767C068}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\game\entity">
+      <UniqueIdentifier>{C2201918-2EAC-86DC-37BD-09D1A3C7E2DC}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\App.h" />
-    <ClInclude Include="src\Log.h" />
+    <ClInclude Include="imgui\ImGuiAPI.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imconfig.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_impl_glfw.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_impl_opengl3.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_impl_opengl3_loader.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_internal.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imstb_rectpack.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imstb_textedit.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imstb_truetype.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\App.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Log.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\core\Camera.h">
+      <Filter>src\engine\core</Filter>
+    </ClInclude>
     <ClInclude Include="src\engine\core\KeyCodes.h">
-      <Filter>engine\core</Filter>
+      <Filter>src\engine\core</Filter>
     </ClInclude>
     <ClInclude Include="src\engine\core\MouseCodes.h">
-      <Filter>engine\core</Filter>
+      <Filter>src\engine\core</Filter>
     </ClInclude>
     <ClInclude Include="src\engine\core\Window.h">
-      <Filter>engine\core</Filter>
-    </ClInclude>
-    <ClInclude Include="src\engine\core\data.h">
-      <Filter>engine\core</Filter>
+      <Filter>src\engine\core</Filter>
     </ClInclude>
     <ClInclude Include="src\engine\core\deltaTime.h">
-      <Filter>engine\core</Filter>
+      <Filter>src\engine\core</Filter>
     </ClInclude>
     <ClInclude Include="src\engine\core\input.h">
-      <Filter>engine\core</Filter>
+      <Filter>src\engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\debug\ImGuiAPI.h">
+      <Filter>src\engine\debug</Filter>
     </ClInclude>
     <ClInclude Include="src\engine\render\EBO.h">
-      <Filter>engine\render</Filter>
+      <Filter>src\engine\render</Filter>
     </ClInclude>
     <ClInclude Include="src\engine\render\ShaderClass.h">
-      <Filter>engine\render</Filter>
+      <Filter>src\engine\render</Filter>
     </ClInclude>
     <ClInclude Include="src\engine\render\Text.h">
-      <Filter>engine\render</Filter>
+      <Filter>src\engine\render</Filter>
     </ClInclude>
     <ClInclude Include="src\engine\render\Texture.h">
-      <Filter>engine\render</Filter>
+      <Filter>src\engine\render</Filter>
     </ClInclude>
     <ClInclude Include="src\engine\render\VAO.h">
-      <Filter>engine\render</Filter>
+      <Filter>src\engine\render</Filter>
     </ClInclude>
     <ClInclude Include="src\engine\render\VBO.h">
-      <Filter>engine\render</Filter>
+      <Filter>src\engine\render</Filter>
     </ClInclude>
     <ClInclude Include="src\game\Game.h">
-      <Filter>game</Filter>
+      <Filter>src\game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\entity\Entity.h">
+      <Filter>src\game\entity</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\App.cpp" />
-    <ClCompile Include="src\Log.cpp" />
+    <ClCompile Include="imgui\imgui.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_demo.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_draw.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_impl_glfw.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_impl_opengl3.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_tables.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_widgets.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\App.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Log.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\core\Camera.cpp">
+      <Filter>src\engine\core</Filter>
+    </ClCompile>
     <ClCompile Include="src\engine\core\Window.cpp">
-      <Filter>engine\core</Filter>
+      <Filter>src\engine\core</Filter>
     </ClCompile>
     <ClCompile Include="src\engine\core\deltaTime.cpp">
-      <Filter>engine\core</Filter>
+      <Filter>src\engine\core</Filter>
     </ClCompile>
     <ClCompile Include="src\engine\core\input.cpp">
-      <Filter>engine\core</Filter>
+      <Filter>src\engine\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\debug\ImGuiAPI.cpp">
+      <Filter>src\engine\debug</Filter>
     </ClCompile>
     <ClCompile Include="src\engine\render\EBO.cpp">
-      <Filter>engine\render</Filter>
+      <Filter>src\engine\render</Filter>
     </ClCompile>
     <ClCompile Include="src\engine\render\ShaderClass.cpp">
-      <Filter>engine\render</Filter>
+      <Filter>src\engine\render</Filter>
     </ClCompile>
     <ClCompile Include="src\engine\render\Text.cpp">
-      <Filter>engine\render</Filter>
+      <Filter>src\engine\render</Filter>
     </ClCompile>
     <ClCompile Include="src\engine\render\Texture.cpp">
-      <Filter>engine\render</Filter>
+      <Filter>src\engine\render</Filter>
     </ClCompile>
     <ClCompile Include="src\engine\render\VAO.cpp">
-      <Filter>engine\render</Filter>
+      <Filter>src\engine\render</Filter>
     </ClCompile>
     <ClCompile Include="src\engine\render\VBO.cpp">
-      <Filter>engine\render</Filter>
+      <Filter>src\engine\render</Filter>
     </ClCompile>
     <ClCompile Include="src\game\Game.cpp">
-      <Filter>game</Filter>
+      <Filter>src\game</Filter>
     </ClCompile>
-    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\game\entity\Entity.cpp">
+      <Filter>src\game\entity</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\stb.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\res\font\Default.ttf">
+      <Filter>assets\res\font</Filter>
+    </None>
+    <None Include="assets\shaders\ShaderText.frag">
+      <Filter>assets\shaders</Filter>
+    </None>
+    <None Include="assets\shaders\ShaderText.vert">
+      <Filter>assets\shaders</Filter>
+    </None>
+    <None Include="assets\shaders\shader2D.frag">
+      <Filter>assets\shaders</Filter>
+    </None>
+    <None Include="assets\shaders\shader2D.vert">
+      <Filter>assets\shaders</Filter>
+    </None>
+    <None Include="assets\shaders\shader3D.frag">
+      <Filter>assets\shaders</Filter>
+    </None>
+    <None Include="assets\shaders\shader3D.vert">
+      <Filter>assets\shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\res\textures\default.png">
+      <Filter>assets\res\textures</Filter>
+    </Image>
   </ItemGroup>
 </Project>

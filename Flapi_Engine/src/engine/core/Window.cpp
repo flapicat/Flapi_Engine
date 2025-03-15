@@ -8,12 +8,7 @@ namespace Engine
 
 	Window::~Window()
 	{
-		glfwDestroyWindow(m_window);
-	}
-
-	GLFWwindow* Window::getWindow()
-	{
-		return m_window;
+		glfwDestroyWindow(data.window);
 	}
 
 	void Window::centerWindow()
@@ -21,10 +16,10 @@ namespace Engine
 		const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 
 		// Calculate the window position to center it
-		int windowPosX = (mode->width - data.getWindowWidth()) / 2;
-		int windowPosY = (mode->height - data.getWindowHeight()) / 2;
+		int windowPosX = (mode->width - data.windowWidth) / 2;
+		int windowPosY = (mode->height - data.windowHeight) / 2;
 
-		glfwSetWindowPos(m_window, windowPosX, windowPosY);
+		glfwSetWindowPos(data.window, windowPosX, windowPosY);
 	}
 
 	void Window::createWindow(int Width, int Height, const char* Title)
@@ -33,77 +28,92 @@ namespace Engine
 		// This funcion creates window and make callbacks 
 		//----------------------------------------------------
 		//WINDOW CREATE
-		data.setWindowWidth(Width);
-		data.setWindowHeight(Height);
-		m_window = glfwCreateWindow(data.getWindowWidth(), data.getWindowHeight(), Title, NULL, NULL);
-		if (m_window == NULL)
+		data.windowWidth = Width;
+		data.windowHeight = Height;
+		data.window = glfwCreateWindow(data.windowWidth, data.windowHeight, Title, NULL, NULL);
+		if (data.window == NULL)
 		{
 			std::cout << "Failed to create GLFW window" << std::endl;
 			glfwTerminate();
 			exit(-1);
 		}
-		glfwMakeContextCurrent(m_window);
+		glfwMakeContextCurrent(data.window);
 
 		//CALLBACKS
-		glfwSetFramebufferSizeCallback(m_window, [](GLFWwindow* window, int width, int height) {
+		glfwSetFramebufferSizeCallback(data.window, [](GLFWwindow* window, int width, int height) {
 				glViewport(0, 0, width, height);
 			});
 
-		glfwSetCursorPosCallback(m_window, [](GLFWwindow* window, double xpos, double ypos) {
-				data.setMousePos(xpos, ypos);
+		glfwSetCursorPosCallback(data.window, [](GLFWwindow* window, double xpos, double ypos) {
+			data.mouseMoved = true;
+			data.mouseX = xpos;
+			data.mouseY = ypos;
+
+				if (data.firstMouse)
+				{
+					data.lastX = xpos;
+					data.lastY = ypos;
+					data.firstMouse = false;
+				}
+				data.xMouseOffset = xpos - data.lastX;
+				data.yMouseOffset = data.lastY - ypos;
+				
+				data.lastX = xpos;
+				data.lastY = ypos;
 			});
 
-		glfwSetScrollCallback(m_window, [](GLFWwindow* window, double xOffset, double yOffset)
+		glfwSetScrollCallback(data.window, [](GLFWwindow* window, double xOffset, double yOffset)
 			{
-				data.setScrollOffset(xOffset, yOffset);
+				data.scrollX = xOffset;
+				data.scrollY = yOffset;
 			});
 
-		glfwSetWindowSizeCallback(m_window, [](GLFWwindow* window, int width, int height)
+		glfwSetWindowSizeCallback(data.window, [](GLFWwindow* window, int width, int height)
 			{
-				data.setWindowWidth(width);
-				data.setWindowHeight(height);
+				data.windowWidth = width; 
+				data.windowHeight = height;
 			});
 
-		glfwSetKeyCallback(m_window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
+		glfwSetKeyCallback(data.window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
 			{
 				switch (action)
 				{
 				case GLFW_PRESS:
 				{
-					data.setKeyPressed(key);
+					data.keyCodePressed = key;
 					//LOG_ENGINE_INFO("Key pressed: {}", key);
 					break;
 				}
 				case GLFW_RELEASE:
 				{
-					data.setKeyPressed(NULL);
-					data.setKeyReleased(key);
+					data.keyCodePressed = NULL;
+					data.keyCodeReleased = key;
 					//LOG_ENGINE_INFO("key released: {}", key);
 					break;
 				}
 				case GLFW_REPEAT:
 				{
-					data.setKeyRepeated(key);
+					data.keyCodeRepeated =key;
 					//LOG_ENGINE_INFO("key repeat: {}", key);
 					break;
 				}
 				}
 			});
 
-		glfwSetMouseButtonCallback(m_window, [](GLFWwindow* window, int button, int action, int mods)
+		glfwSetMouseButtonCallback(data.window, [](GLFWwindow* window, int button, int action, int mods)
 			{
 				switch (action)
 				{
 				case GLFW_PRESS:
 				{
-					data.setMouseButtonPressed(button);
+					data.mouseButtonPressed =button;
 					//LOG_ENGINE_INFO("Key pressed: {}", button);
 					break;
 				}
 				case GLFW_RELEASE:
 				{
-					data.setMouseButtonPressed(NULL);
-					data.setMouseButtonReleased(button);
+					data.mouseButtonPressed = NULL;
+					data.mouseButtonReleased = button;
 					//LOG_ENGINE_INFO("key released: {}", button);
 					break;
 				}

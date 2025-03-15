@@ -8,6 +8,7 @@ namespace Engine
 	{
 	public:
 		static bool IsKeyPressed(KeyCode key, GLFWwindow* window);
+		static bool IsKeyReleased(KeyCode key, GLFWwindow* window);
 
 		static bool IsMouseButtonPressed(MouseCode button, GLFWwindow* window);
 	};
