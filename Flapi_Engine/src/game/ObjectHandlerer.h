@@ -1,12 +1,26 @@
-#include "Entity.h"
+#pragma once
+#include <vector>
 
-Entity::Entity()
-{
-}
+#include "engine/render/ShaderClass.h"
+#include "engine/object/Object.h"
+#include "assets.h"
 
-void Entity::init()
+class ObjectHandlerer
 {
-	m_vertices = {
+public:
+	ObjectHandlerer();
+
+	void init();
+	void render(Engine::Shader& shader);
+private:
+    void createCube(glm::vec3 position, Assets::Textures tex);
+    void createPyramid(glm::vec3 position, Assets::Textures tex);
+private:
+    Engine::staticObject tempObject;
+	std::vector<Engine::staticObject> objects;
+
+    //CUBE
+	std::vector<float> m_cubeVertices = {
         // Positions         // Texture Coords
         // Front face
         -0.5f, -0.5f,  0.5f,  0.0f,  0.0f, // Bottom-left
@@ -42,9 +56,9 @@ void Entity::init()
         -0.5f, -0.5f, -0.5f,  1.0f,  1.0f,
          0.5f, -0.5f, -0.5f,  0.0f,  1.0f,
          0.5f, -0.5f,  0.5f,  0.0f,  0.0f,
-        -0.5f, -0.5f,  0.5f,  1.0f,  0.0f 
-    };
-	m_indices = {
+        -0.5f, -0.5f,  0.5f,  1.0f,  0.0f
+    };;
+    std::vector<unsigned int> m_cubeIndices = {
         // Front face
         0, 1, 2, 2, 3, 0,
         // Back face
@@ -56,28 +70,31 @@ void Entity::init()
         // Top face
         16, 17, 18, 18, 19, 16,
         // Bottom face
-        20, 21, 22, 22, 23, 20 
+        20, 21, 22, 22, 23, 20
     };
 
-    vao.createVAO();
-    vao.bind();
+    //Pyramid
+    std::vector<float> m_pyramidVertices = {
+        // Positions         // Texture Coords
+        // Base (Square)
+        -0.5f, 0.0f,  0.5f,  0.0f, 0.0f,  // Bottom-left
+         0.5f, 0.0f,  0.5f,  1.0f, 0.0f,  // Bottom-right
+         0.5f, 0.0f, -0.5f,  1.0f, 1.0f,  // Top-right
+        -0.5f, 0.0f, -0.5f,  0.0f, 1.0f,  // Top-left
 
-    vbo.attachVertices(m_vertices.data() , m_vertices.size() * sizeof(float));
-    ebo.attachIndices(m_indices.data(), m_indices.size() * sizeof(unsigned int));
+        // Apex (Top point)
+         0.0f, 1.0f,  0.0f,  0.5f, 0.5f   // Peak of the pyramid
+    };
+    std::vector<unsigned int> m_pyramidIndices = {
+        // Base (two triangles)
+        0, 1, 2,   // First triangle
+        2, 3, 0,   // Second triangle
 
-    vao.linkVBO(vbo, 0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
-    vao.linkVBO(vbo, 1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
-    
-    vao.unbind();
-}
+        // Side Faces (triangles)
+        0, 1, 4,   // Front face
+        1, 2, 4,   // Right face
+        2, 3, 4,   // Back face
+        3, 0, 4    // Left face
+    };
 
-void Entity::render(Engine::Shader& shader)
-{
-    vao.bind();
-
-    glm::mat4 model = glm::mat4(1.0f);
-    model = glm::translate(model, m_position);
-    shader.setMat4("model", model);
-
-    glDrawElements(GL_TRIANGLES, m_indices.size(), GL_UNSIGNED_INT, 0);
-}
+};

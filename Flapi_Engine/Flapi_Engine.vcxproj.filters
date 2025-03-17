@@ -120,9 +120,9 @@
     <ClInclude Include="src\game\Game.h">
       <Filter>src\game</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\entity\Entity.h">
-      <Filter>src\game\entity</Filter>
-    </ClInclude>
+    <ClInclude Include="src\engine\object\Object.h" />
+    <ClInclude Include="src\game\ObjectHandlerer.h" />
+    <ClInclude Include="src\game\assets.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="imgui\imgui.cpp">
@@ -188,15 +188,15 @@
     <ClCompile Include="src\game\Game.cpp">
       <Filter>src\game</Filter>
     </ClCompile>
-    <ClCompile Include="src\game\entity\Entity.cpp">
-      <Filter>src\game\entity</Filter>
-    </ClCompile>
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\stb.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\engine\object\Object.cpp" />
+    <ClCompile Include="src\game\ObjectHandlerer.cpp" />
+    <ClCompile Include="src\game\assets.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\res\font\Default.ttf">
@@ -225,5 +225,7 @@
     <Image Include="assets\res\textures\default.png">
       <Filter>assets\res\textures</Filter>
     </Image>
+    <Image Include="assets\res\textures\container.jpg" />
+    <Image Include="assets\res\textures\grass.jpg" />
   </ItemGroup>
 </Project>

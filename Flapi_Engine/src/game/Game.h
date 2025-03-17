@@ -15,7 +15,8 @@
 
 #include "engine/debug/ImGuiAPI.h"
 
-#include "entity/Entity.h"
+#include "ObjectHandlerer.h"
+#include "assets.h"
 
 enum gameState
 {
@@ -41,14 +42,15 @@ public:
 private:
 	//ENGINE
 	Engine::TextClass m_text;
-	Engine::Texture m_defaultTexture;
 	Engine::Shader m_shader2D;
 	Engine::Shader m_shader3D;
 	Engine::Shader m_shaderText;
+	Engine::Camera m_camera;
 
 	//GAME
 	gameState m_gameState;
-	Engine::Camera m_camera;
-	Entity m_testEntity;
+	ObjectHandlerer objectHandlerer;
+	Assets assets;
+	//Entity m_testEntity;
 };
 

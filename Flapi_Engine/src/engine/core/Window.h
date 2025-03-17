@@ -29,8 +29,8 @@ namespace Engine
 			//WINDOW
 			bool fullscreen = false;
 			GLFWwindow* getWindow() { return data.window; };
-			int getWindowWidth() { return data.windowWidth; }
-			int getWindowHeight() { return data.windowHeight; }
+			int getWindowWidth() { return data.windowWidthCurrent; }
+			int getWindowHeight() { return data.windowHeightCurrent; }
 			void setWindowSize(int width, int height) { glfwSetWindowSize(data.window, width, height); }
 			void centerWindow();
 			void switchToFullScreen();
@@ -58,7 +58,8 @@ namespace Engine
 			double scrollX = 0, scrollY = 0;
 			//WINDOW
 			GLFWwindow* window = nullptr;
-			int windowWidth = 0, windowHeight = 0;
+			int windowWidthCurrent = 0, windowHeightCurrent = 0;
+			int windowWidthSaved = 0, windowHeightSaved = 0;
 			//KEYCODES
 			KeyCode keyCodePressed, keyCodeReleased, keyCodeRepeated;
 			MouseCode mouseButtonPressed, mouseButtonReleased;

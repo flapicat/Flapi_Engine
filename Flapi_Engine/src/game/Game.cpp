@@ -20,11 +20,10 @@ void Game::init()
 	m_shader2D.CompileShader("assets/shaders/shader2D.vert", "assets/shaders/shader2D.frag");
 
 	m_text.init("assets/res/font/Default.ttf", 36);
-	m_defaultTexture.loadTexture2D("assets/res/textures/default.png");
-
+	assets.loadTextures();
 	
 	m_camera = Engine::Camera(glm::vec3(0.0f,0.0f,2.0f));
-	m_testEntity.init();
+	objectHandlerer.init();
 }
 
 void Game::run()
@@ -66,9 +65,7 @@ void Game::render()
 	m_shader3D.setMat4("projection", Engine::Window::data.getProjection3D(m_camera.Zoom));
 	m_shader3D.setMat4("view", m_camera.GetViewMatrix());
 
-	m_defaultTexture.bindTexture2D();
-	m_testEntity.render(m_shader3D);
-
+	objectHandlerer.render(m_shader3D);
 
 	//TEXT (MUST BE RENDERED AT THE END !!!)
 	m_shaderText.use();
@@ -132,7 +129,7 @@ void Game::ImGuiMain()
 	const char* items[] = { "2560 x 1440", "1920 x 1080", "1600 x 900", "1280 x 720" };
 	int current_item = -1;
 
-	ImGui::SetNextWindowSize(ImVec2(170, 150));
+	ImGui::SetNextWindowSize(ImVec2(190, 170));
 	ImGui::SetNextWindowPos(ImVec2(x - ImGui::GetWindowSize().x + 200, 25), ImGuiCond_Always);
 	
 	ImGui::Begin("Window Resolutions");
@@ -175,6 +172,7 @@ void Game::ImGuiMain()
 			Engine::Window::data.centerWindow();
 		}
 	}
+	ImGui::Text("Current window: %d, %d", Engine::Window::data.getWindowWidth(), Engine::Window::data.getWindowHeight());
 	ImGui::End();
 }
 

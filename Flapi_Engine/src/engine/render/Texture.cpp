@@ -25,15 +25,21 @@ namespace Engine
 		}
 		else
 		{
-			std::cout << "Failed to load BLOCK texture" << std::endl;
+			std::cout << "Failed to load texture" << std::endl;
 		}
 		stbi_image_free(data);
+	}
+
+	void Texture::bindTexture2D(unsigned int tex)
+	{
+		glBindTexture(GL_TEXTURE_2D, tex);
 	}
 
 	void Texture::bindTexture2D()
 	{
 		glBindTexture(GL_TEXTURE_2D, texture);
 	}
+
 	void Texture::unbindTexture2D()
 	{
 		glBindTexture(GL_TEXTURE_2D, 0);

@@ -16,8 +16,8 @@ namespace Engine
 		const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 
 		// Calculate the window position to center it
-		int windowPosX = (mode->width - data.windowWidth) / 2;
-		int windowPosY = (mode->height - data.windowHeight) / 2;
+		int windowPosX = (mode->width - data.windowWidthCurrent) / 2;
+		int windowPosY = (mode->height - data.windowHeightCurrent) / 2;
 
 		glfwSetWindowPos(data.window, windowPosX, windowPosY);
 	}
@@ -25,6 +25,8 @@ namespace Engine
 	void Window::Data::switchToFullScreen()
 	{
 		data.fullscreen = true;
+		data.windowWidthSaved = data.windowWidthCurrent;
+		data.windowHeightSaved = data.windowHeightCurrent;
 		GLFWmonitor* monitor = glfwGetPrimaryMonitor();
 		const GLFWvidmode* mode = glfwGetVideoMode(monitor);
 		glfwSetWindowMonitor(data.window, monitor, 0, 0, mode->width, mode->height, GLFW_DONT_CARE);
@@ -33,7 +35,7 @@ namespace Engine
 	void Window::Data::switchToWindowed()
 	{
 		data.fullscreen = false;
-		glfwSetWindowMonitor(data.window, nullptr, 100, 100, data.getWindowWidth(), data.getWindowHeight(), GLFW_DONT_CARE);
+		glfwSetWindowMonitor(data.window, nullptr, 100, 100, data.windowWidthSaved, data.windowHeightSaved, GLFW_DONT_CARE);
 	}
 
 	void Window::createWindow(int Width, int Height, const char* Title)
@@ -42,9 +44,9 @@ namespace Engine
 		// This funcion creates window and make callbacks 
 		//----------------------------------------------------
 		//WINDOW CREATE
-		data.windowWidth = Width;
-		data.windowHeight = Height;
-		data.window = glfwCreateWindow(data.windowWidth, data.windowHeight, Title, NULL, NULL);
+		data.windowWidthCurrent = Width;
+		data.windowHeightCurrent = Height;
+		data.window = glfwCreateWindow(data.windowWidthCurrent, data.windowHeightCurrent, Title, NULL, NULL);
 		if (data.window == NULL)
 		{
 			std::cout << "Failed to create GLFW window" << std::endl;
@@ -84,8 +86,8 @@ namespace Engine
 
 		glfwSetWindowSizeCallback(data.window, [](GLFWwindow* window, int width, int height)
 			{
-				data.windowWidth = width; 
-				data.windowHeight = height;
+				data.windowWidthCurrent = width; 
+				data.windowHeightCurrent = height;
 			});
 
 		glfwSetKeyCallback(data.window, [](GLFWwindow* window, int key, int scancode, int action, int mods)

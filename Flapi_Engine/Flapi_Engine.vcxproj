@@ -107,6 +107,9 @@
     <ClInclude Include="imgui\imstb_rectpack.h" />
     <ClInclude Include="imgui\imstb_textedit.h" />
     <ClInclude Include="imgui\imstb_truetype.h" />
+    <ClInclude Include="src\game\assets.h" />
+    <ClInclude Include="src\game\ObjectHandlerer.h" />
+    <ClInclude Include="src\engine\object\Object.h" />
     <ClInclude Include="src\App.h" />
     <ClInclude Include="src\Log.h" />
     <ClInclude Include="src\engine\core\Camera.h" />
@@ -123,7 +126,6 @@
     <ClInclude Include="src\engine\render\VAO.h" />
     <ClInclude Include="src\engine\render\VBO.h" />
     <ClInclude Include="src\game\Game.h" />
-    <ClInclude Include="src\game\entity\Entity.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="imgui\imgui.cpp" />
@@ -133,6 +135,9 @@
     <ClCompile Include="imgui\imgui_impl_opengl3.cpp" />
     <ClCompile Include="imgui\imgui_tables.cpp" />
     <ClCompile Include="imgui\imgui_widgets.cpp" />
+    <ClCompile Include="src\game\assets.cpp" />
+    <ClCompile Include="src\game\ObjectHandlerer.cpp" />
+    <ClCompile Include="src\engine\object\Object.cpp" />
     <ClCompile Include="src\App.cpp" />
     <ClCompile Include="src\Log.cpp" />
     <ClCompile Include="src\engine\core\Camera.cpp" />
@@ -147,7 +152,6 @@
     <ClCompile Include="src\engine\render\VAO.cpp" />
     <ClCompile Include="src\engine\render\VBO.cpp" />
     <ClCompile Include="src\game\Game.cpp" />
-    <ClCompile Include="src\game\entity\Entity.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\stb.cpp" />
   </ItemGroup>
@@ -161,7 +165,9 @@
     <None Include="assets\shaders\shader3D.vert" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="assets\res\textures\container.jpg" />
     <Image Include="assets\res\textures\default.png" />
+    <Image Include="assets\res\textures\grass.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\vendor\GLFW\GLFW.vcxproj">
