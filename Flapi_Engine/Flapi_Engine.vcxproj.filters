@@ -31,14 +31,14 @@
     <Filter Include="src\engine\debug">
       <UniqueIdentifier>{486DD8C8-3466-F71A-5D98-DC9F49F0D626}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\engine\object">
+      <UniqueIdentifier>{98AA5CFD-04C1-5A93-4D38-E6B4B98D2B1B}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\engine\render">
       <UniqueIdentifier>{819B9404-EDB1-929A-3629-1EBCA27E6322}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\game">
       <UniqueIdentifier>{165530CF-0222-8BDA-2B3B-79821767C068}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\game\entity">
-      <UniqueIdentifier>{C2201918-2EAC-86DC-37BD-09D1A3C7E2DC}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -99,6 +99,9 @@
     <ClInclude Include="src\engine\debug\ImGuiAPI.h">
       <Filter>src\engine\debug</Filter>
     </ClInclude>
+    <ClInclude Include="src\engine\object\Object.h">
+      <Filter>src\engine\object</Filter>
+    </ClInclude>
     <ClInclude Include="src\engine\render\EBO.h">
       <Filter>src\engine\render</Filter>
     </ClInclude>
@@ -120,9 +123,12 @@
     <ClInclude Include="src\game\Game.h">
       <Filter>src\game</Filter>
     </ClInclude>
-    <ClInclude Include="src\engine\object\Object.h" />
-    <ClInclude Include="src\game\ObjectHandlerer.h" />
-    <ClInclude Include="src\game\assets.h" />
+    <ClInclude Include="src\game\ObjectHandlerer.h">
+      <Filter>src\game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\assets.h">
+      <Filter>src\game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="imgui\imgui.cpp">
@@ -167,6 +173,9 @@
     <ClCompile Include="src\engine\debug\ImGuiAPI.cpp">
       <Filter>src\engine\debug</Filter>
     </ClCompile>
+    <ClCompile Include="src\engine\object\Object.cpp">
+      <Filter>src\engine\object</Filter>
+    </ClCompile>
     <ClCompile Include="src\engine\render\EBO.cpp">
       <Filter>src\engine\render</Filter>
     </ClCompile>
@@ -188,15 +197,18 @@
     <ClCompile Include="src\game\Game.cpp">
       <Filter>src\game</Filter>
     </ClCompile>
+    <ClCompile Include="src\game\ObjectHandlerer.cpp">
+      <Filter>src\game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\assets.cpp">
+      <Filter>src\game</Filter>
+    </ClCompile>
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\stb.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\engine\object\Object.cpp" />
-    <ClCompile Include="src\game\ObjectHandlerer.cpp" />
-    <ClCompile Include="src\game\assets.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\res\font\Default.ttf">
@@ -222,10 +234,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="assets\res\textures\container.jpg">
+      <Filter>assets\res\textures</Filter>
+    </Image>
     <Image Include="assets\res\textures\default.png">
       <Filter>assets\res\textures</Filter>
     </Image>
-    <Image Include="assets\res\textures\container.jpg" />
-    <Image Include="assets\res\textures\grass.jpg" />
+    <Image Include="assets\res\textures\grass.jpg">
+      <Filter>assets\res\textures</Filter>
+    </Image>
   </ItemGroup>
 </Project>
