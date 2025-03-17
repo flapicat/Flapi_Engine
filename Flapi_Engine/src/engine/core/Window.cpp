@@ -11,7 +11,7 @@ namespace Engine
 		glfwDestroyWindow(data.window);
 	}
 
-	void Window::centerWindow()
+	void Window::Data::centerWindow()
 	{
 		const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 
@@ -20,6 +20,20 @@ namespace Engine
 		int windowPosY = (mode->height - data.windowHeight) / 2;
 
 		glfwSetWindowPos(data.window, windowPosX, windowPosY);
+	}
+
+	void Window::Data::switchToFullScreen()
+	{
+		data.fullscreen = true;
+		GLFWmonitor* monitor = glfwGetPrimaryMonitor();
+		const GLFWvidmode* mode = glfwGetVideoMode(monitor);
+		glfwSetWindowMonitor(data.window, monitor, 0, 0, mode->width, mode->height, GLFW_DONT_CARE);
+	}
+
+	void Window::Data::switchToWindowed()
+	{
+		data.fullscreen = false;
+		glfwSetWindowMonitor(data.window, nullptr, 100, 100, data.getWindowWidth(), data.getWindowHeight(), GLFW_DONT_CARE);
 	}
 
 	void Window::createWindow(int Width, int Height, const char* Title)

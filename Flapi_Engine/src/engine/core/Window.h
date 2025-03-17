@@ -19,7 +19,7 @@ namespace Engine
 		Window();
 		~Window();
 
-		void centerWindow();
+
 		void createWindow(int Width, int Height, const char* Title);
 
 		struct Data
@@ -27,9 +27,14 @@ namespace Engine
 		public:
 			friend class Window;
 			//WINDOW
+			bool fullscreen = false;
 			GLFWwindow* getWindow() { return data.window; };
 			int getWindowWidth() { return data.windowWidth; }
 			int getWindowHeight() { return data.windowHeight; }
+			void setWindowSize(int width, int height) { glfwSetWindowSize(data.window, width, height); }
+			void centerWindow();
+			void switchToFullScreen();
+			void switchToWindowed();
 			//MOUSE
 			glm::vec2 getMousePos() { return glm::vec2(data.mouseX, data.mouseY); }
 			glm::vec2 getMouseOffset() { return glm::vec2(data.xMouseOffset, data.yMouseOffset); }
@@ -38,7 +43,8 @@ namespace Engine
 			//SCROLL
 			glm::vec2 getScrollOffset() { return glm::vec2(data.scrollX, data.scrollY); }
 			//DATA
-			glm::mat4 getProjection() { return glm::ortho(0.0f, static_cast<float>(getWindowWidth()), 0.0f, static_cast<float>(getWindowHeight())); }
+			glm::mat4 getProjection2D() { return glm::ortho(0.0f, static_cast<float>(data.getWindowWidth()), 0.0f, static_cast<float>(data.getWindowHeight())); }
+			glm::mat4 getProjection3D(float cameraZoom) { return glm::perspective(glm::radians(cameraZoom), (float)data.getWindowWidth() / (float)data.getWindowHeight(), 0.1f, 100.0f); }
 			//BOOLS
 			void setMouseMoved(bool x) { data.mouseMoved = x; }
 			bool getMouseMoved() { return data.mouseMoved; }
